@@ -41,3 +41,16 @@ kmeans.cluster_centers_
 
 ##Store the cluster labels of data items
 kmeans.labels_
+
+##Add a new column lable with the clustering labels
+df["LABEL"] = kmeans.labels_
+df.head(10)
+
+##Count the number of values for each label
+df.LABEL.value_counts()
+
+##Select a random sample with 10 rows that have the label 2
+df[df.LABEL == 2].sample(n=10, replace=False, random_state=0)
+
+##Get mean of each label for every column in df
+df.groupby("LABEL").mean()
