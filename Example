@@ -22,3 +22,22 @@ df.OBEREG = df.OBEREG.cat.codes
 df = df.drop(df.index[[3,8,12,27]])
 
 df.head()
+
+from sklearn.cluster import KMeans
+
+##Setting up new df
+df = df[["POPU_LSA", "POPU_ST", "CENTLIB", "BRANLIB", "BKMOB", "TOTSTAFF", "TOTINCM"]]
+
+X = df
+
+##Create a new k-means clustering model with k set to 5
+kmeans = KMeans(n_clusters=5, random_state=0) 
+
+##Fitting model
+kmeans.fit(X)
+
+##Store the values of centroids
+kmeans.cluster_centers_
+
+##Store the cluster labels of data items
+kmeans.labels_
