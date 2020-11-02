@@ -1,0 +1,16 @@
+from seaborn import load_dataset
+dfdi = load_dataset("diamonds")
+dfdi.head()
+
+##build a clustering model that is able to group all diamonds into 10 clusters of similar ones 
+##copy of dfdi for clustering
+dfdic = dfdi.copy()
+
+##use all columns in dfdic as features
+X = dfdic
+
+##new k-means clustering model kmeans and fit it (10 clusters, 0 random seed)
+from sklearn.cluster import KMeans
+
+kmeans = KMeans(n_clusters=10, random_state=0)
+kmeans.fit(X)
