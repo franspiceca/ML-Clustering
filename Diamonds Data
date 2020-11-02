@@ -14,3 +14,12 @@ from sklearn.cluster import KMeans
 
 kmeans = KMeans(n_clusters=10, random_state=0)
 kmeans.fit(X)
+
+##assign the resulting labels of kmeans to the new column of dfdic called label
+dfdic["label"] = kmeans.labels_
+
+##number of values for each label
+dfdic.label.value_counts()
+
+##random sample of dfdic with 30 rows that have the lable 4
+dfdic[dfdic.label == 4].sample(n=30, replace=False, random_state=0)
